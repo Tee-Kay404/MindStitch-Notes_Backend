@@ -1,0 +1,9 @@
+POST http://localhost:3000/users
+Content-Type: application/json
+ 
+{
+    "Name" : "TEE_KAY",
+    "age" : "12",
+    "sports" : "Football",
+    "status" : "love"
+} 
