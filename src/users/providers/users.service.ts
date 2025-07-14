@@ -35,8 +35,8 @@ export class UserService{
             email: 'Maestro007@gmail.com'
         },
         {
-            firstname : 'TEE_KAY',
-            email: 'Danlowo@gmai,.com'
+            firstname : 'Danlowo',
+            email: 'Danlowo@gmail.com'
         }
     ]
     }
