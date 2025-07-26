@@ -1,8 +1,8 @@
 import { Optional } from "@nestjs/common";
-import { IsArray, IsEnum, IsISO8601, IsJSON, IsNotEmpty, IsOptional, IsString, IsUrl, isURL, Matches, MinLength, ValidateNested } from "class-validator";
+import { IsArray, IsEnum, IsISO8601, IsJSON, IsNotEmpty, IsOptional, IsString, IsUrl, isURL, Matches, MaxLength, MinLength, ValidateNested } from "class-validator";
 import { PostType } from "../enums/postType.enum";
 import { postStatus } from "../enums/postStatus.enum";
-import CreatePostMetaOptionsDto from "./create-post-meta-options.dto";
+import CreatePostMetaOptionsDto from "../../meta-options/dtos/create-post-meta-options.dto";
 import { Type } from "class-transformer";
 import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
 
@@ -24,6 +24,7 @@ export class CreatePostDto{
       description: 'this shows the title'
     })
     @MinLength(4)
+    @MaxLength(30)
     @IsNotEmpty()
     title: string
 
@@ -41,6 +42,7 @@ export class CreatePostDto{
       description: 'my-blog-post'
     })
     @IsNotEmpty()
+    @MaxLength(30)
     @Matches(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, {
     message: 'Slug must contain only lowercase letters, numbers, and hyphens (no trailing hyphen).',
   })
@@ -72,6 +74,7 @@ export class CreatePostDto{
     schema: string
     
     @IsOptional()
+    @MaxLength(30)
     @ApiPropertyOptional({
        description: 'Featured image image on your posts',
        example: 'http://example.com/image.png'
@@ -99,27 +102,22 @@ export class CreatePostDto{
 
     @IsOptional()
     @ApiPropertyOptional({
-      type: 'array',
-      required: false,
+      type: 'object',
+      required: [],
+      additionalProperties: false,
       items: {
-        type: 'object',
+        title: 'object',
         properties: {
-          key: {
-            title: 'string',
-            description: 'The Key can be any String for your identifier for your meta option',
-            example: 'sideBarEnabled'
+          metavalue: {
+            type: 'json',
+            description: 'The MetaValue is a Json String',
+            example: '{"sideBarEnabled" : true}'
           },
-           value: {
-            title: 'any',
-            description: 'Any value you want to save to the key',
-            example: 'true'
-          }
         }
       }
     })
     @ValidateNested({each: true})
-    @IsArray()
     @Type(()=> CreatePostMetaOptionsDto)
-    metaOptions?: CreatePostMetaOptionsDto[];
+    metaOptions?: CreatePostMetaOptionsDto | null;
 
 }

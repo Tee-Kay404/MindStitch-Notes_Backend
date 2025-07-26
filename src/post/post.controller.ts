@@ -22,9 +22,8 @@ export class PostController {
         description: 'You get a response if your post is created successfully'
     })
     @Post()
-    public createPost(@Body() createPost: CreatePostDto): string {
-        console.log(createPost);
-        return 'You have successfully created this Post';
+    public createPost(@Body() createPost: CreatePostDto) {
+        return this.postService.create(createPost)
     }
 
       @ApiOperation({
