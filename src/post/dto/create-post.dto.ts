@@ -95,7 +95,7 @@ export class CreatePostDto{
        description: 'An array of tags passed as String values',
        example: ["tags", "typeScript"]
     })
-    @IsArray()
+    @IsArray()P
     @IsString({ each: true})
     @MinLength(3, { each: true})
     tags?: string[];

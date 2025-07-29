@@ -9,35 +9,41 @@ import { User } from './users/user.entity';
 import { TagsModule } from './tags/tags.module';
 import { MetaOptionsModule } from './meta-options/meta-options.module';
 import { PracticeModule } from './practice/practice.module';
-import { ProviderService } from './provider/service/provider.service';
+import { NotesModule } from './notes/notes.module';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+
 
 
 @Module({
   imports: [
-    UsersModule, 
-    PostModule, 
-    AuthModule,
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
     TypeOrmModule.forRootAsync({
-      imports: [],
-      inject: [],
+      imports: [ConfigModule],
       useFactory: () => ({
         type: 'postgres',
-      autoLoadEntities: true,
-      synchronize: true,
-      port: 5432,
-      username: 'postgres',
-      password: '2005tony',
-      host: 'localhost',
-      database: 'nestjs-blog'
-      })
-  }),
+        host: process.env.DB_HOST,
+        port: parseInt(process.env.DB_PORT || '5432', 10),
+        username: process.env.DB_USERNAME,
+        password: process.env.DB_PASSWORD,
+        database: process.env.DB_NAME,
+        autoLoadEntities: true,
+        synchronize: true,
+      }),
+    }),
+    UsersModule,
+    PostModule,
+    AuthModule,
     TagsModule,
     MetaOptionsModule,
-    PracticeModule
-],
+    PracticeModule,
+    NotesModule, 
+  ],
   controllers: [AppController],
-  providers: [AppService, ProviderService],
+  providers: [AppService],
 })
 export class AppModule {}
+
 
 

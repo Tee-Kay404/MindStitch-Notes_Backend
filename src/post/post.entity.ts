@@ -23,7 +23,7 @@ export class Post {
         default: PostType.POST,
         nullable: false
     })
-    postType: PostType
+    category: PostType
     
     @Column({
         type: 'varchar',
@@ -64,15 +64,15 @@ export class Post {
         type: 'timestamp', // datetime in mysql
         nullable: true
     })
-    publishOn?: Date
+    Date?: Date
     
 
-    //work on this later in the course
-   @Column("int", { array: true , nullable: true})
-    tags?: string[];
+//     //work on this later in the course
+//    @Column("int", { array: true , nullable: true})
+//     tags?: string[];
 
-//    @Column("int", { array: true , nullable: false})
-    @OneToOne(()=> MetaOption)
-    @JoinColumn()
-    metaOptions?: MetaOption;
+// //    @Column("int", { array: true , nullable: false})
+//     @OneToOne(()=> MetaOption)
+//     @JoinColumn()
+//     metaOptions?: MetaOption;
 }

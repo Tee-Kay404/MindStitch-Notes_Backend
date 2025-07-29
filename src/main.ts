@@ -1,31 +1,32 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
-import{DocumentBuilder, SwaggerModule}from '@nestjs/swagger';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
+  
   app.useGlobalPipes(new ValidationPipe({
     whitelist: true,
     forbidNonWhitelisted: true,
-    transform: true
+    transform: true,
   }));
 
-  // Swagger Configuration
-const config = new DocumentBuilder()
-.setTitle('NestJS MasterClass - Blog app Api')
-.setDescription('Use the base API URL as http://localhost:3000')
-.setTermsOfService('http://localhost:3000')
-.setLicense('MIT License', 'https://github.com/Tee-Kay404')
-.addServer('http://localhost:3000')
-.setVersion('1.0')
-.build();
-  // Instantiate document
-const document = SwaggerModule.createDocument(app, config);
-  // setup
-SwaggerModule.setup('api', app, document);
+  //  Swagger Configuration
+  const config = new DocumentBuilder()
+    .setTitle('NestJS MasterClass - Blog app API')
+    .setDescription('Use the base API URL as https://df92b3ddf29c.ngrok-free.app')
+    .setTermsOfService('https://df92b3ddf29c.ngrok-free.app/')
+    .setLicense('MIT License', 'https://github.com/Tee-Kay404')
+    .addServer('https://df92b3ddf29c.ngrok-free.app/')
+    .setVersion('1.0')
+    .build();
+
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('api', app, document);
 
   await app.listen(process.env.PORT ?? 3000, '0.0.0.0');
-  console.log(app)
 }
+
 bootstrap();

@@ -1,0 +1,7 @@
+POST https://df92b3ddf29c.ngrok-free.app/notes
+content-Type: application/json
+
+{
+    "title" : "Snday School",
+    "body" : "All aboute Jesus"
+}

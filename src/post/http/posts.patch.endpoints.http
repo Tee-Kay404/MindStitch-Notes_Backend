@@ -3,5 +3,5 @@ Content-Type: application/json
 
 {
     "id": 1234,
-    "postType": "page"
+    "category": "page"
 }

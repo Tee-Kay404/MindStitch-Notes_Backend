@@ -1,15 +1,15 @@
-POST http://localhost:3000/post
+POST https://df92b3ddf29c.ngrok-free.app/post
 Content-Type: application/json
 
 {
     "title" : "What's new with NestJS",
-    "postType" : "post",
+    "category" : "post",
     "slug" : "whats-old-with-nestjs",
     "status" : "draft",
     "content" : "Stuff",
     "schema" : "{\"key\":\"value\"}",
     "featuredImageUrl": "http://example.com/image.png",
-    "publishOn": "2024-03-16T07:46:32+0000"
+    "Date": "2024-03-16T07:46:32+0000"
     // "tags": ["tags", "typeScript"],
     // "metaOptions": {
     //      "metaValue" : "{\"sideBarEnabled\": true, \"footerActive\": true}"
