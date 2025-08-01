@@ -12,7 +12,7 @@ export class PostService {
      * Injecting user service
      */
     constructor(
-        private readonly usersService: UserService,
+        // private readonly usersService: UserService,
 
         /**
          * Injecting post repository
@@ -26,9 +26,8 @@ export class PostService {
         public readonly metaOptionsRepository: Repository<MetaOption>
 
     ) {}
-    public findAll(userId: string) {
-        const user = this.usersService.findById(userId)
-                console.log(userId);
+    public findAll(initial: string) {
+
 
 return [
   {
