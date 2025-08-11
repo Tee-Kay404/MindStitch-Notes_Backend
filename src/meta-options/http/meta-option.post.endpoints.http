@@ -1,4 +1,4 @@
-POST http://localhost:3000/meta-options
+POST https://mindstitch-notes-backend-6.onrender.com/meta-options
 Content-Type: application/json
 
 {

@@ -1,1 +1,11 @@
-GET https://mindstitch-notes-backend-fchu.onrender.com/post/default
+{{
+//   pre request scripts
+    const date = new Date();
+    exports.startDate = date.toString();
+    exports.endDate = date.toString();
+}}
+GET http://localhost:3000/post/
+?startDate={{startDate}}
+&endDate={{endDate}}
+&limit=1
+&page=4

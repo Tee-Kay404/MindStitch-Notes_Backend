@@ -17,6 +17,7 @@ import { GetUsersParamDto } from './dtos/get-users-param.dto';
 import { PatchUserDto} from './dtos/patch-users.dto';
 import { UserService } from './providers/users.service';
 import { ApiOperation, ApiQuery, ApiTags } from '@nestjs/swagger';
+import { UserCreateManyDto } from 'src/post/dto/create-many-user.dto';
 
 @Controller('users')
 @ApiTags('Users')
@@ -24,7 +25,7 @@ export class UsersController {
 
     constructor( private readonly userService: UserService) {}   
 
-    @Get('/{:id}')
+    @Get('{/:id}')
     @ApiOperation({
         summary: 'fetches a list of registered users on the application'
     })
@@ -55,6 +56,13 @@ export class UsersController {
         @Body() createUserDto: CreateUserDto, 
     ) {
         return this.userService.createUser(createUserDto);
+    }
+
+    @Post('create-many')
+    public createManyUser(
+        @Body() createUserManyDto: UserCreateManyDto, 
+    ) {
+        return this.userService.createMany(createUserManyDto);
     }
 
     @Patch()

@@ -1,17 +1,19 @@
-import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, Query } from '@nestjs/common';
 import { PostService } from './providers/post.service';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { CreatePostDto } from './dto/create-post.dto';
 import { PatchPostsDto } from './dto/patch-post.dto';
+import { GetPostDto } from './dto/get-post.dto';
 
 @Controller('post')
 @ApiTags('Post')
 export class PostController {
     constructor(private readonly postService: PostService) {}
 
-    @Get('default')
-    public getPost(@Param('default') initial: string) {
-        return this.postService.findAll(initial);
+    @Get('{/:userId}')
+    public getPost(@Param('userId') userId: string, @Query() postQuery: GetPostDto) {
+        console.log(postQuery);
+        return this.postService.findAll(postQuery, userId);
     }
 
     @ApiOperation({
@@ -35,7 +37,12 @@ export class PostController {
     })
     @Patch()
     public updatePost(@Body() patchPostsDto: PatchPostsDto) {
-       console.log(patchPostsDto)
+       return  this.postService.updatePost(patchPostsDto);
+    }
+
+    @Delete()
+    public deletePost(@Query('id', ParseIntPipe) id: number) {
+       return this.postService.deletePost(id);
     }
 }
 

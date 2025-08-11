@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "types": ["node", "aws-lambda"],
+    "types": ["node", "aws-lambda", "jest"],
     "module": "commonjs",
     "declaration": true,
     "removeComments": true,

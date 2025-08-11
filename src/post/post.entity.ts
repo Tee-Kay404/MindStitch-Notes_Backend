@@ -1,8 +1,8 @@
-import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { PostType } from "./enums/postType.enum";
 import { postStatus } from "./enums/postStatus.enum";
-import CreatePostMetaOptionsDto from "../meta-options/dtos/create-post-meta-options.dto";
 import { MetaOption } from "src/meta-options/meta-options.entity";
+import { User } from "src/users/user.entity";
 import { Tag } from "src/tags/tags.entity";
 
 @Entity()
@@ -64,15 +64,22 @@ export class Post {
         type: 'timestamp', // datetime in mysql
         nullable: true
     })
-    Date?: Date
+    publishOn?: Date;
+
+    @ManyToMany(()=> Tag, (tags)=> tags.post, {
+        eager: true
+    })
+    @JoinTable()
+    tags?: Tag[]
+
+    @OneToOne(()=> MetaOption, (metaOptions)=> metaOptions.post, {
+        cascade: true,
+        eager: true
+    })
+    metaOptions?: MetaOption;
     
-
-//     //work on this later in the course
-//    @Column("int", { array: true , nullable: true})
-//     tags?: string[];
-
-// //    @Column("int", { array: true , nullable: false})
-//     @OneToOne(()=> MetaOption)
-//     @JoinColumn()
-//     metaOptions?: MetaOption;
+    @ManyToOne(()=> User, (user)=> user.posts, {
+        eager: true
+    })
+    author: User;
 }

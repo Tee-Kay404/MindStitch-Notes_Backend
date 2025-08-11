@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Post } from '@nestjs/common';
 import CreatePostMetaOptionsDto from './dtos/create-post-meta-options.dto';
 import { MetaOptionsService } from './providers/meta-options.service';
 

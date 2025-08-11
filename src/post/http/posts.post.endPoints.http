@@ -1,17 +1,18 @@
-POST https://df92b3ddf29c.ngrok-free.app/post
+POST http://localhost:3000/post
 Content-Type: application/json
 
 {
-    "title" : "What's new with NestJS",
-    "category" : "post",
-    "slug" : "whats-old-with-nestjs",
+    "title" : "What's new with Dart program",
+    "postType" : "post",
+    "slug" : "whats-old-with-nestjs-15",
     "status" : "draft",
     "content" : "Stuff",
     "schema" : "{\"key\":\"value\"}",
     "featuredImageUrl": "http://example.com/image.png",
-    "Date": "2024-03-16T07:46:32+0000"
-    // "tags": ["tags", "typeScript"],
-    // "metaOptions": {
-    //      "metaValue" : "{\"sideBarEnabled\": true, \"footerActive\": true}"
-    // }
+    "publishOn": "2024-03-16T07:46:32+0000",
+    "tags": [2,5],
+    "metaOptions": {
+         "metaValue" : "{\"sideBarEnabled\": true, \"footerActive\": true}"
+    },
+    "authorId": 1
 }

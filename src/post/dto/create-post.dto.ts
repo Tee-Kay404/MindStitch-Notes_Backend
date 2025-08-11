@@ -1,10 +1,10 @@
-import { Optional } from "@nestjs/common";
-import { IsArray, IsEnum, IsISO8601, IsJSON, IsNotEmpty, IsOptional, IsString, IsUrl, isURL, Matches, MaxLength, MinLength, ValidateNested } from "class-validator";
+import { IsArray, IsEnum, IsInt, IsISO8601, IsJSON, IsNotEmpty, IsNumber, IsOptional, IsString, IsUrl, isURL, Matches, MaxLength, MinLength, ValidateNested } from "class-validator";
 import { PostType } from "../enums/postType.enum";
 import { postStatus } from "../enums/postStatus.enum";
 import CreatePostMetaOptionsDto from "../../meta-options/dtos/create-post-meta-options.dto";
 import { Type } from "class-transformer";
 import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
+import { CreateTagDto } from "src/tags/dtos/create-tags.dto";
 
 export class CreatePostDto{
 //     title: String
@@ -90,25 +90,24 @@ export class CreatePostDto{
     @IsOptional()
     publishOn?: Date
 
-    @IsOptional()
     @ApiPropertyOptional({
-       description: 'An array of tags passed as String values',
-       example: ["tags", "typeScript"]
-    })
-    @IsArray()P
-    @IsString({ each: true})
-    @MinLength(3, { each: true})
-    tags?: string[];
+    description: 'Array of ids of tags passed as integers in an array',
+    example: [1, 2],
+  })
+  @IsOptional()
+  @IsArray()
+  @IsInt({ each: true })
+  tags?: number[];
 
     @IsOptional()
     @ApiPropertyOptional({
       type: 'object',
       required: [],
-      additionalProperties: false,
+      additionalProperties: false, 
       items: {
         title: 'object',
         properties: {
-          metavalue: {
+          metavalue: { 
             type: 'json',
             description: 'The MetaValue is a Json String',
             example: '{"sideBarEnabled" : true}'
@@ -119,5 +118,14 @@ export class CreatePostDto{
     @ValidateNested({each: true})
     @Type(()=> CreatePostMetaOptionsDto)
     metaOptions?: CreatePostMetaOptionsDto | null;
+
+    @ApiProperty({
+      type: 'integer',
+      required: true,
+      example: 1
+    })
+    @IsNotEmpty()
+    @IsInt()
+    authorId: number
 
 }

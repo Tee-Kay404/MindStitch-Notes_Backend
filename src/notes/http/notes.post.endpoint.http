@@ -1,7 +1,11 @@
-POST https://df92b3ddf29c.ngrok-free.app/notes
+POST https://mindstitch-notes-backend-6.onrender.com/notes
 content-Type: application/json
 
 {
-    "title" : "Snday School",
-    "body" : "All aboute Jesus"
+    "title" : "Sunday School",
+    "body" : "All about Jesus"
+},
+{
+    "title" : "Flutter",
+    "body" : "All about Programming"
 }

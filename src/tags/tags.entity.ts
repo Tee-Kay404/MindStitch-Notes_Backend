@@ -1,51 +1,67 @@
-import { Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryColumn, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Post } from 'src/post/post.entity';
+import {
+  Column,
+  CreateDateColumn,
+  DeleteDateColumn,
+  Entity,
+  ManyToMany,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
 @Entity()
-export class Tag{
-    @PrimaryGeneratedColumn()
-   id: number;
+export class Tag {
+  @PrimaryGeneratedColumn()
+  id: string;
 
-   @Column({
+  @Column({
     type: 'varchar',
     length: 256,
     nullable: false,
     unique: true,
-   })
-   name: string;
+  })
+  name: string;
 
   @Column({
     type: 'varchar',
     length: 512,
     nullable: false,
     unique: true,
-   })
-   slug: string;
+  })
+  slug: string;
 
-   @Column({
+  @Column({
     type: 'text',
-    nullable: true
-   })
-   description?: string;
+    nullable: true,
+  })
+  description?: string;
 
-    @Column({
+  @Column({
     type: 'text',
-    nullable: true
-   })
-   schema?: string;
+    nullable: true,
+  })
+  schema?: string;
+  
+  @ManyToMany(()=> Post, (post)=> post.tags, {
+    onDelete: 'CASCADE'
+  })
+  post: Post[]
 
- @Column({
+  @Column({
     type: 'varchar',
-    length: 30,
-    nullable: true
-   })
-   featuredImageUrl?: string;
+    length: 1024,
+    nullable: true,
+  })
+  featuredImage?: string;
 
-   @CreateDateColumn()
-   createDate: Date;
+  // https://orkhan.gitbook.io/typeorm/docs/decorator-reference
+  @CreateDateColumn()
+  createDate: Date;
 
-   @UpdateDateColumn()
-   updateDate: Date;
+  @UpdateDateColumn()
+  updateDate: Date;
 
-   @DeleteDateColumn()
-   deleteDate: Date;
+  // Add this decorartor and column enables soft delete
+  @DeleteDateColumn()
+  deletedAt: Date;
 }

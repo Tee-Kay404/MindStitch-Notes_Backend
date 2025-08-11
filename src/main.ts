@@ -11,15 +11,18 @@ async function bootstrap() {
     whitelist: true,
     forbidNonWhitelisted: true,
     transform: true,
+    transformOptions: {
+      enableImplicitConversion: true
+    }
   }));
 
   //  Swagger Configuration
   const config = new DocumentBuilder()
     .setTitle('NestJS MasterClass - Blog app API')
-    .setDescription('Use the base API URL as https://df92b3ddf29c.ngrok-free.app')
-    .setTermsOfService('https://df92b3ddf29c.ngrok-free.app/')
+    .setDescription('Use the base API URL as https://mindstitch-notes-backend-6.onrender.com')
+    .setTermsOfService('https://mindstitch-notes-backend-6.onrender.com')
     .setLicense('MIT License', 'https://github.com/Tee-Kay404')
-    .addServer('https://df92b3ddf29c.ngrok-free.app/')
+    .addServer('https://mindstitch-notes-backend-6.onrender.com')
     .setVersion('1.0')
     .build();
 
