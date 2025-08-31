@@ -7,7 +7,6 @@ import { AuthModule } from "./auth/auth.module";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { MetaOptionsModule } from "./meta-options/meta-options.module";
 import { PracticeModule } from "./practice/practice.module";
-import { NotesModule } from "./notes/notes.module";
 import { ConfigModule, ConfigService } from "@nestjs/config";
 import { TagsModule } from "./tags/tags.module";
 import appConfig from "./config/app.config";
@@ -46,10 +45,9 @@ const ENV = process.env.NODE_ENV;
     AuthModule,
     MetaOptionsModule,
     PracticeModule,
-    NotesModule,
     TagsModule,
     PaginationModule,
-  ],
+],
   controllers: [AppController],
   providers: [AppService, PaginationProvider],
 })

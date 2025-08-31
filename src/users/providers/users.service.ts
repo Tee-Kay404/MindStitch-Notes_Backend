@@ -11,6 +11,7 @@ import { throws } from "assert";
 import { UsersCreateManyProviders } from "./users-create-many.providers";
 import { UserCreateManyDto } from "src/post/dto/create-many-user.dto";
 import { CreateUserProvider } from "./create-user.provider";
+import { FindOneUserEmailProvider } from "./find-one-user-email.provider";
 
 /**
  * Class to connect to users table and perform business operation
@@ -42,6 +43,10 @@ export class UserService {
       * Injecting createUserProvider
       */
      private readonly createUserProvider: CreateUserProvider,
+     /**
+      * Injecting createUserProvider
+      */
+     private readonly findUserByIdProvider: FindOneUserEmailProvider,
   ) {}
 
   /**
@@ -114,5 +119,10 @@ export class UserService {
   // Injecting createManyUserProvider
    public async createMany(createUseManyDto: UserCreateManyDto) {
        return await this.createManyUser.createMany(createUseManyDto);
+  }
+
+  public async findUserByEmail(email: string) {
+    
+    return await this.findUserByIdProvider.findUserByEmail(email);
   }
 }
