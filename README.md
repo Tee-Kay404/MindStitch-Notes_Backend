@@ -5,10 +5,8 @@
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
 [circleci-url]: https://circleci.com/gh/nestjs/nest
 
-<p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> NestJS API Server – A scalable and modular back-end application built with NestJS, implementing clean architecture principles, DTO validation, and RESTful endpoints. This project serves as a foundation for production-grade APIs with integrated dependency injection, controller-service structure, and robust data handling. Ideal for rapid development of enterprise-level applications.</p>
+<p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> NestJS API Server – A robust, AI-powered scalable and modular back-end application built with NestJS, implementing clean architecture principles, DTO validation, and RESTful endpoints. This project serves as a foundation for production-grade APIs with integrated dependency injection, controller-service structure, and robust data handling. Ideal for rapid development of enterprise-level applications.</p>
 <p # AI-Powered Note-Taking Backend
-
-A robust, AI-powered note management backend built with **NestJS**, designed to simplify how users capture, process, organise, and retrieve information.
 
 The platform provides intelligent note-taking capabilities, enabling users to create, read, update, and manage text-based notes, transcribe audio recordings into text, and capture important discussions and key information from meetings.
 
