@@ -6,6 +6,33 @@
 [circleci-url]: https://circleci.com/gh/nestjs/nest
 
 <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> NestJS API Server – A scalable and modular back-end application built with NestJS, implementing clean architecture principles, DTO validation, and RESTful endpoints. This project serves as a foundation for production-grade APIs with integrated dependency injection, controller-service structure, and robust data handling. Ideal for rapid development of enterprise-level applications.</p>
+<p # AI-Powered Note-Taking Backend
+
+A robust, AI-powered note management backend built with **NestJS**, designed to simplify how users capture, process, organise, and retrieve information.
+
+The platform provides intelligent note-taking capabilities, enabling users to create, read, update, and manage text-based notes, transcribe audio recordings into text, and capture important discussions and key information from meetings.
+
+By leveraging AI-powered processing and speech-to-text capabilities, the system transforms audio and unstructured information into accessible, organised, and searchable notes.
+
+## Core Capabilities
+
+- **Note Management:** Create, read, update, and organise notes.
+- **Audio Transcription:** Convert audio recordings into text using speech-to-text technology.
+- **AI-Assisted Note Processing:** Leverage AI to process and structure captured information.
+- **Meeting Documentation:** Capture meeting discussions, transcribe conversations, and preserve important information.
+- **Text-Based Note Taking:** Create and manage written notes for everyday information capture.
+- **Backend API:** Expose structured API endpoints to support client applications and integrations.
+
+## Technology Stack
+
+- **Framework:** NestJS
+- **Language:** TypeScript
+- **Runtime:** Node.js
+- **AI Integration:** AI-powered language processing and transcription services
+
+## Project Goal
+
+To provide an intelligent and scalable backend infrastructure for modern note-taking applications, making information capture, audio transcription, meeting documentation, and note management more efficient through AI.>
 <p align="center">
 <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
 <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
